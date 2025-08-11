@@ -27,6 +27,11 @@ case "${RUN_MODE:-cron}" in
         exit 1
     fi
 
+    # 启动 HTTP 服务器
+    echo "🔄 启动http服务。。。。。"
+    nohup python3 -m http.server 8080 &
+    echo "🔄 启动http服务完成"
+
     # 立即执行一次（如果配置了）
     if [ "${IMMEDIATE_RUN:-false}" = "true" ]; then
         echo "▶️ 立即执行一次"
